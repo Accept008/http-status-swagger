@@ -11,15 +11,15 @@ import org.springframework.http.HttpStatus;
 */
 
 @ExceptionResponseInfo(
-    errCode = "E40000",
-    status = HttpStatus.BAD_REQUEST
+    status = HttpStatus.BAD_REQUEST,
+    errCode = BadException.CODE,
+    errMsg = "Incorrect semantics or request parameters",
+    devMsg = "Equivalent to HTTP 400 Bad Request error",
+    moreInfoUrl = "https://tools.ietf.org/html/rfc7235#section-3.1"
 )
 
 public class BadException extends GeneralException {
-    public static final String CODE = "E40000";
-    public static final String MSG = "自定义400";
-    public static final String DEV_MSG = "BadException";
-
+    public static final String CODE = "E400";
 
     public BadException() {
         this((String)null);
