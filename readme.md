@@ -1,5 +1,5 @@
 ## swagger显示的api接口信息
-  ![image](./img/api-detail-swagger.png)
+  ![image](./img/api-detail-swagger-2.png)
 
 ## http状态200,payload为字符串
     {
