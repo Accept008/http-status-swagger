@@ -23,6 +23,20 @@
     }
   ![image](./img/status-200-object.png)
 
+## http状态201,payload为对象
+    {
+        "status": 201,
+        "requestId": "D4E06989-DEC4-4BEF-B180-FA50299D136E",
+        "message": "获取成功",
+        "payload": {
+            "userId": "101",
+            "userName": "用户101",
+            "phone": "9527"
+        }
+    }
+  ![image](./img/status-201-object.png)
+
+
 ## http状态400,参数有误
     {
         "status": 400,

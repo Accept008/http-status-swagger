@@ -61,6 +61,28 @@ public class LabController {
         return ResponseEntity.status(HttpStatus.OK).body(resp);
     }
 
+    @GetMapping("/201/object")
+    @ApiOperation(
+            value = "201请求,payload为对象测试",
+            notes = "201请求,payload为对象测试",
+            produces = "application/json"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "成功响应", response = UserResponseWrapper.class),
+            @ApiResponse(code = 400, message = "传参错误响应", response = RestErrorResponse.class),
+            @ApiResponse(code = 500, message = "服务器内部错误", response = RestErrorResponse.class),
+    })
+    public ResponseEntity<SuccessResponse> reqOb201(String pa){
+        UserResult result = new UserResult();
+        result.setUserId("101");
+        result.setUserName("用户101");
+        result.setPhone("9527");
+        SuccessResponse resp = SuccessResponse.buildOkResponse();
+        resp.setMessage("获取成功");
+        resp.setPayload(result);
+        return ResponseEntity.status(HttpStatus.CREATED).body(resp);
+    }
+
     @GetMapping("/400")
     @ApiOperation(
             value = "400请求测试",
