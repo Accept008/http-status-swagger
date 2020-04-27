@@ -16,6 +16,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @Api(description = "测试用")
 public class LabController {
@@ -81,6 +84,31 @@ public class LabController {
         resp.setMessage("获取成功");
         resp.setPayload(result);
         return ResponseEntity.status(HttpStatus.CREATED).body(resp);
+    }
+
+    /**
+     * 一行代码构建响应报文
+     * @param pa
+     * @return
+     */
+    @GetMapping("/200/resp")
+    @ApiOperation(
+            value = "200请求,payload为对象测试",
+            notes = "200请求,payload为对象串测试",
+            produces = "application/json"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "成功响应", response = UserResponseWrapper.class),
+            @ApiResponse(code = 400, message = "传参错误响应", response = RestErrorResponse.class),
+            @ApiResponse(code = 500, message = "服务器内部错误", response = RestErrorResponse.class),
+    })
+    public ResponseEntity<SuccessResponse> req(String pa){
+        UserResult result = new UserResult();
+        result.setUserId("101");
+
+        // 响应报文
+        SuccessResponse resp = SuccessResponse.buildOkResponse("获取成功", result);
+        return ResponseEntity.status(HttpStatus.OK).body(resp);
     }
 
     @GetMapping("/400")
